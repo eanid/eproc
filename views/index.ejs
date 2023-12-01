@@ -1,0 +1,16 @@
+<%- include('partials/header'); -%>
+
+	<h1 class="text-primary">Hello, world!</h1>
+	<%users.forEach((user)=> {%>
+		<div>
+			<h2>
+				<%=user.id%> -
+				<%=user.email%>
+				<%=user.name%>
+			</h2>
+		</div>
+		<% })%>
+
+			<%- include('partials/footer'); -%>
+
+				

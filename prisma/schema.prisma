@@ -1,0 +1,44 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x"]
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  id          Int           @id @default(autoincrement())
+  email       String        @unique
+  name        String?
+  password    String
+  companyName String?
+  isVendor    Boolean
+  createdBy   Procurement[] @relation(name: "createdBy")
+  vendorBy    Procurement[] @relation(name: "vendorBy")
+}
+
+model Procurement {
+  id          Int       @id @default(autoincrement())
+  itemName    String
+  description String
+  price       Float
+  createdBy   User      @relation(name: "createdBy", fields: [userId], references: [id])
+  userId      Int
+  vendorBy    User?     @relation(name: "vendorBy", fields: [vendorId], references: [id])
+  vendorId    Int?
+  progress    Int?
+  status      String
+  payment     String
+  bookedAt    DateTime?
+  startAt    DateTime?
+  finishAt    DateTime?
+  paymentAt    DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
