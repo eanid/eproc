@@ -1,0 +1,22 @@
+<form action="/proc" method="POST" class="">
+
+	<div class="form-outline mb-2">
+		<label for="name" class="form-label">Nama Item:</label>
+		<input type="text" class="form-control" id="name" name="data[itemName]" placeholder="nama barang" required>
+	</div>
+	
+	<div class="form-outline mb-2">
+		<label for="description" class="form-label">Deskripsi:</label>
+		<textarea  type="text" class="form-control" id="description" name="data[description]" placeholder="deskripsi barang" rows="3" required></textarea>
+	</div>
+	
+	<div class="form-outline mb-2">
+		<label for="price" class="form-label">Harga Item:</label>
+		<input type="number" class="form-control" id="price" name="data[price]" placeholder="Rp 100.000.000" required>
+	</div>
+
+	<div class="text-center pt-1 mb-5 pb-1">
+		<button class="btn btn-secondary" type="submit">Input Pengadaan</button>
+	</div>
+
+</form>

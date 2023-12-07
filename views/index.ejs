@@ -1,16 +1,116 @@
 <%- include('partials/header'); -%>
 
-	<h1 class="text-primary">Hello, world!</h1>
-	<%users.forEach((user)=> {%>
-		<div>
-			<h2>
-				<%=user.id%> -
-				<%=user.email%>
-				<%=user.name%>
-			</h2>
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+		<div class="container-fluid">
+			<a class="navbar-item navbar-brand d-flex flex-row" href="/">
+				<i class="fa fa-cog  fa-2x fa-fw"></i>
+				<h1>eproc</h1>
+				<p class="text-warning">
+					<% if (profile.isVendor===true) { %>
+						vendor
+						<% } %>
+				</p>
+			</a>
+
+			<!-- nav item -->
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse bg-secondary
+		  " id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link active" aria-current="page" href="#">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Profile</a>
+					</li>
+					<!-- <li class="nav-item dropdown">
+				<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+				  Dropdown
+				</a>
+				<ul class="dropdown-menu">
+				  <li><a class="dropdown-item" href="#">Action</a></li>
+				  <li><a class="dropdown-item" href="#">Another action</a></li>
+				  <li><hr class="dropdown-divider"></li>
+				  <li><a class="dropdown-item" href="#">Something else here</a></li>
+				</ul>
+			  </li> -->
+				</ul>
+				<a class="nav-link text-white me-3 fs-3" href="#">
+					<%=profile.name%>
+				</a>
+				<a href="/logout">
+					<button class="btn btn-light">Logout</button>
+				</a>
+			</div>
 		</div>
-		<% })%>
+	</nav>
 
-			<%- include('partials/footer'); -%>
+	<!-- content -->
 
-				
+	<i class="fa fa-solid fa-caret-square-o-right fa-3x fa-fw text-secondary" onclick="maximize()" id="nobar"></i>
+
+	<!-- Main Content -->
+	<div class="main-content p-5" id="main-content">
+
+		<h2>Dasboard Content</h2>
+		<div class="row">
+
+			<!-- first table / sale / pt&v -->
+			<div class="col-12 col-md-8">
+				<h3>Semua List Procurement </h3>
+				<%- include('eproc'); -%>
+
+			</div>
+
+			<!-- input eproc /pt -->
+			<% if (profile.isVendor===false) { %>
+				<div class="col-12 col-md-4">
+					<h3>Input Procurement</h3>
+					<%- include('procurement'); -%>
+				</div>
+				<% } %>
+		</div>
+
+		<!-- second table -->
+		<div class="row">
+			<!-- second table / belum dibooked / pt&v -->
+			<div class="col-12 col-md-8">
+				<h3>List Sale Project</h3>
+				<div class="col-12 col-md-8">
+					<h3>Semua List Procurement </h3>
+					<% if (eprocSale.length) { %>
+						<%- include('eprocsale'); -%>
+							<% } else{ %>
+								<div class="alert alert-warning" role="alert">
+									belum ada
+								</div>
+								<% } %>
+
+			</div>
+		</div>
+		<div class="row">
+			<!-- third table / project saya / pt&v -->
+			<div class="col-12 col-md-8">
+				<h3>My Project</h3>
+				<div class="col-12 col-md-8">
+					<h3> ProcurementSaya </h3>
+					<% if (myEproc.length) { %>
+						<%- include('eproc-vendor'); -%>
+							<% } else{ %>
+								<div class="alert alert-warning" role="alert">
+									belum ada
+								</div>
+								<% } %>
+
+			</div>
+		</div>
+
+
+
+
+		<%- include('partials/footer'); -%>

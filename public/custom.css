@@ -1,0 +1,67 @@
+.navbar {
+	height: 60px;
+	min-height: 60px;
+}
+
+.navbar-item {
+	height: 50px;
+	min-height: 50px;
+}
+
+a { color: inherit; } 
+
+
+.gradient-custom-2 {
+	/* fallback for old browsers */
+	background: #fccb90;
+
+	/* Chrome 10-25, Safari 5.1-6 */
+	background: -webkit-linear-gradient(to right, #99ccff, #A3A3FF, #7879FF, #4949FF);
+
+	/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: linear-gradient(to right, #99ccff, #A3A3FF, #7879FF, #4949FF);
+}
+
+@media (min-width: 768px) {
+	.gradient-form {
+		height: 100vh !important;
+	}
+}
+
+@media (min-width: 769px) {
+	.gradient-custom-2 {
+		border-top-right-radius: .3rem;
+		border-bottom-right-radius: .3rem;
+	}
+}
+
+/* .sidebar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 250px;
+	padding: 60px 0;
+}
+
+.sidebar-nav-item {
+	padding: 10px 15px;
+	color: #fff;
+}
+
+.sidebar-nav-item:hover {
+	background-color: #99ccff;
+} */
+
+/* Main Content */
+/* .main-content {
+	margin-left: 250px;
+} */
+
+#nobar {
+	display: none;
+}
+
+.hiddenRow {
+    padding: 0 !important;
+}

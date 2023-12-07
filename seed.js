@@ -31,7 +31,7 @@ export const procurementdata = [
         description: "Description for Item A",
         price: 100.0,
         userId: 1,
-        vendorId: 2,
+        // vendorId: 2,
         // progress: 0,
         status: "sale",
         payment: "pending",

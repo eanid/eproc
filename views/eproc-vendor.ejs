@@ -1,0 +1,147 @@
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">item</th>
+			<th scope="col">harga</th>
+			<th scope="col">dibuat</th>
+			<th scope="col">oleh PT</th>
+			<th scope="col">status</th>
+			<th scope="col">action</th>
+		</tr>
+	</thead>
+	<tbody>
+		<%myEproc.forEach((item,index)=> {%>
+			<tr class="accordion" id="accordionExample" data-bs-toggle="collapse"
+				data-bs-target="#collapseVendor<%=item.id%>" aria-expanded="true"
+				aria-controls="collapseVendor<%=item.id%>">
+				<th scope="col" class="accordion-item">
+					<%=index+1%>
+				</th>
+				<td>
+					<%=item.itemName%>
+				</td>
+				<td>
+					Rp. <%=item.price%>
+				</td>
+				<td>
+					<%=moment(item.createdAt.toString()).format("LL")%>
+				</td>
+				<td>
+					<%=item.createdBy.companyName%>
+				</td>
+				<td>
+					<%=item.status%> - 
+					<% if (item.status==="booked") { %>
+						menunggu approve pt
+							<% } %>
+				</td>
+				<td>
+					<button class="btn p-0">
+						<span class="fa fa-solid fa-bars p-0">
+						</span>
+					</button>
+				</td>
+			<tr>
+				<td id="collapseVendor<%=item.id%>" colspan="12"
+					class="hiddenRow accordion-collapse collapse" data-bs-parent="#accordionExample">
+					<div class="accordian-body row ms-5">
+						<ul class="col-12 col-md-5">
+							<h6>Detail Procurement </h6>
+							<li>nama item : <%=item.itemName%>
+							</li>
+							<li>deskripsi item : <%=item.description%>
+							</li>
+							<li>harga item : <%=item.price%>
+							</li>
+							<li>oleh pt : <%=item.createdBy.companyName%>
+							</li>
+							<li>oleh staff : <%=item.createdBy.name%> - <%=item.createdBy.email%>
+							</li>
+							<li>tanggal ro dibuat : <%=moment(item.createdAt.toString()).format("LL")%>
+							</li>
+							<li>tanggal ro diupdate :
+								<%=moment(item.updatedAt.toString()).format("LL")%>
+							</li>
+							<li>deskripsi item : <%=item.description%>
+							</li>
+						</ul>
+						<ul class="col-12 col-md-4">
+							<h6>Update Procurement </h6>
+							<li>status : <%=item.status%>
+							</li>
+							<li >progress :
+								<% if (item.progress!=null) { %>
+									<div class="progress">
+										<div class="progress-bar" role="progressbar"
+											style="width:<%=item.progress%>%"
+											aria-valuenow="<%=item.progress%>" aria-valuemin="0"
+											aria-valuemax="100">
+											<%=item.progress%>%
+										</div>
+									</div>
+
+									<% } else{ %>
+										-
+										<% } %>
+							</li>
+							<li>dibooking vendor:
+								<% if (item.vendorBy!==null) { %>
+									<%=item.vendorBy.companyName%>
+										<% } else{ %>
+											-
+											<% } %>
+							</li>
+							<li>staff vendor:
+								<% if (item.vendorBy!==null) { %>
+									<%=item.vendorBy.name%> - <%=item.vendorBy.email%>
+											<% } else{ %>
+												-
+												<% } %>
+							</li>
+							<li>update booking:
+								<% if (item.bookedAt!==null) { %>
+									<%=moment(item.bookedAt.toString()).format("LL")%>
+										<% } else{ %>
+											-
+											<% } %>
+							</li>
+							<li>update approval:
+								<% if (item.approveAt!==null) { %>
+									<%=moment(item.approveAt.toString()).format("LL")%>
+										<% } else{ %>
+											-
+											<% } %>
+							</li>
+								<li>start project:
+									<% if (item.startAt!==null) { %>
+										<%=moment(item.startAt.toString()).format("LL")%>
+											<% } else{ %>
+												-
+												<% } %>
+								</li>
+								<li>finish project:
+									<% if (item.finishAt!==null) { %>
+										<%=moment(item.finishAt.toString()).format("LL")%>
+											<% } else{ %>
+												-
+												<% } %>
+								</li>
+
+							<!-- finish -->
+							<li>payment : <%=item.payment%>
+							</li>
+							<li>payment tanggal:
+								<% if (item.paymentAt!==null) { %>
+									<%=moment(item.paymentAt.toString()).format("LL")%>
+										<% } else{ %>
+											-
+											<% } %>
+							</li>
+					</div>
+				</td>
+			</tr>
+			</tr>
+			<% })%>
+	</tbody>
+</table>

@@ -36,6 +36,7 @@ model Procurement {
   status      String
   payment     String
   bookedAt    DateTime?
+  approveAt    DateTime?
   startAt    DateTime?
   finishAt    DateTime?
   paymentAt    DateTime?
