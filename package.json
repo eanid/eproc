@@ -1,6 +1,10 @@
 {
 	"main": "index.js",
 	"type": "module",
+	"description": "node v18.12.0",
+	"engines": {
+	  "node": "v18.12.0"
+	},
 	"scripts": {
 		"dev": "nodemon ./index.js",
 		"migrate" : "pnpx prisma migrate dev --name init",
